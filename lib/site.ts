@@ -1,6 +1,6 @@
-// פרטי יצירת קשר — עדכן את המספר האמיתי כאן (מספר לדוגמה בינתיים)
-export const PHONE_DISPLAY = '050-000-0000'
-export const PHONE_INTL = '972500000000' // פורמט בינלאומי לוואטסאפ
+// פרטי יצירת קשר
+export const PHONE_DISPLAY = '053-545-5667'
+export const PHONE_INTL = '972535455667' // פורמט בינלאומי לוואטסאפ
 
 export const WHATSAPP_MESSAGE = 'היי עידן, ראיתי את האתר ואשמח לשמוע פרטים על בניית אתר 😊'
 

@@ -1,5 +1,6 @@
-import { ArrowLeft, MessageCircle, Sparkles, Star } from 'lucide-react'
+import { ArrowLeft, Sparkles, Star } from 'lucide-react'
 import { whatsappLink } from '@/lib/site'
+import { WhatsappIcon } from '@/components/icons/whatsapp'
 
 export function Hero() {
   return (
@@ -7,11 +8,11 @@ export function Hero() {
       {/* glow backdrop */}
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" aria-hidden />
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-primary/25 blur-[140px]"
+        className="aurora pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] max-w-full -translate-x-1/2 rounded-full bg-primary/25 blur-[140px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-accent/20 blur-[120px]"
+        className="aurora-slow pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-accent/20 blur-[120px]"
         aria-hidden
       />
 
@@ -27,7 +28,7 @@ export function Hero() {
             <span className="text-primary glow-text">להגיד וואו</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg font-medium leading-relaxed text-muted-foreground md:text-xl">
             אני עידן — בונה אתרי תדמית, דפי נחיתה ומערכות דיגיטליות שמושכות
             לקוחות, בונות אמון ומעלות מכירות. עיצוב מרשים, ביצועים מהירים ותוצאות
             מדידות.
@@ -45,9 +46,9 @@ export function Hero() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-3.5 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 hover:bg-whatsapp-dark"
             >
-              <MessageCircle className="h-5 w-5 text-primary" />
+              <WhatsappIcon className="h-5 w-5" />
               דברו איתי בוואטסאפ
             </a>
           </div>
