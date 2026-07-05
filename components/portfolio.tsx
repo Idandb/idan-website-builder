@@ -1,11 +1,13 @@
 import { ArrowUpLeft } from 'lucide-react'
 import { projects } from '@/lib/site'
+import { Reveal } from '@/components/reveal'
+import { SpotlightCard } from '@/components/spotlight-card'
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="relative py-20 md:py-28">
+    <section id="portfolio" className="relative overflow-hidden py-20 md:py-28">
       <div
-        className="pointer-events-none absolute left-1/2 top-20 h-96 w-[600px] -translate-x-1/2 rounded-full bg-primary/10 blur-[150px]"
+        className="pointer-events-none absolute left-1/2 top-20 h-96 w-[600px] max-w-full -translate-x-1/2 rounded-full bg-primary/10 blur-[150px]"
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
@@ -16,54 +18,83 @@ export function Portfolio() {
           <h2 className="mt-3 text-balance font-display text-4xl font-black md:text-5xl">
             פרויקטים אמיתיים. תוצאות אמיתיות.
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg font-medium text-muted-foreground">
             הצצה לחלק מהאתרים שבניתי — כל אחד עוצב והוקם מאפס בהתאמה מלאה ללקוח.
           </p>
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
-          {projects.map((p) => (
-            <a
-              key={p.title}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:glow-ring"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={p.image || '/placeholder.svg'}
-                  alt={`תצוגה של האתר ${p.title}`}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-              </div>
-
-              <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-xl font-bold">{p.title}</h3>
-                    <p className="text-sm text-primary">{p.tagline}</p>
-                  </div>
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <ArrowUpLeft className="h-4 w-4" />
-                  </span>
-                </div>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {p.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground"
-                    >
-                      {t}
+          {projects.map((p, i) => (
+            <Reveal key={p.title} delay={i * 90}>
+              <SpotlightCard
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:glow-ring"
+              >
+                {/* preview חי במסגרת חלון דפדפן */}
+                <div className="relative z-[1] border-b border-border">
+                  <div className="flex items-center gap-2 bg-muted/60 px-3 py-2">
+                    <span className="flex gap-1.5" aria-hidden>
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                     </span>
-                  ))}
+                    <span
+                      dir="ltr"
+                      className="mx-auto max-w-[70%] truncate rounded-md bg-background/70 px-3 py-0.5 text-[11px] text-muted-foreground"
+                    >
+                      {p.url.replace(/^https?:\/\//, '')}
+                    </span>
+                  </div>
+
+                  <div className="relative aspect-[16/10] overflow-hidden bg-card">
+                    {/* fallback — צילום מסך מאחורי ה-iframe אם האתר חוסם הטמעה */}
+                    <img
+                      src={p.image || '/placeholder.svg'}
+                      alt={`תצוגה של האתר ${p.title}`}
+                      className="absolute inset-0 h-full w-full object-cover object-top"
+                      aria-hidden
+                    />
+                    <iframe
+                      src={p.url}
+                      title={`תצוגה חיה של האתר ${p.title}`}
+                      loading="lazy"
+                      tabIndex={-1}
+                      sandbox="allow-scripts allow-same-origin allow-popups"
+                      className="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
+                      style={{ width: '250%', height: '250%', transform: 'scale(0.4)' }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent" />
+                  </div>
                 </div>
-              </div>
-            </a>
+
+                <div className="relative z-[1] flex flex-1 flex-col p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-xl font-bold">{p.title}</h3>
+                      <p className="text-sm font-semibold text-primary">{p.tagline}</p>
+                    </div>
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      <ArrowUpLeft className="h-4 w-4" />
+                    </span>
+                  </div>
+                  <p className="mt-3 flex-1 text-sm font-medium leading-relaxed text-muted-foreground">
+                    {p.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </SpotlightCard>
+            </Reveal>
           ))}
         </div>
       </div>

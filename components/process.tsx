@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/reveal'
+
 const steps = [
   {
     num: '01',
@@ -32,25 +34,26 @@ export function Process() {
           <h2 className="mt-3 text-balance font-display text-4xl font-black md:text-5xl">
             פשוט, שקוף ובלי כאב ראש
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg font-medium text-muted-foreground">
             מלווה אותך יד ביד מהרעיון הראשוני ועד שהאתר עובד ומייצר לך תוצאות.
           </p>
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
-            <div
+          {steps.map((s, i) => (
+            <Reveal
               key={s.num}
+              delay={i * 90}
               className="relative rounded-2xl border border-border bg-background p-6"
             >
               <span className="font-display text-5xl font-black text-primary/25">
                 {s.num}
               </span>
               <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-sm font-medium leading-relaxed text-muted-foreground">
                 {s.description}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
