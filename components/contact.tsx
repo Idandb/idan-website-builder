@@ -22,7 +22,7 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden py-20 md:py-28">
+    <section id="contact" className="relative overflow-hidden py-16 md:py-28">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
         aria-hidden

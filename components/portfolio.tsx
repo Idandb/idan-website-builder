@@ -6,7 +6,7 @@ import { SpotlightCard } from '@/components/spotlight-card'
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="relative overflow-hidden py-20 md:py-28">
+    <section id="portfolio" className="relative overflow-hidden py-16 md:py-28">
       <div
         className="pointer-events-none absolute left-1/2 top-20 h-96 w-[600px] max-w-full -translate-x-1/2 rounded-full bg-primary/10 blur-[150px]"
         aria-hidden
