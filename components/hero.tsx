@@ -1,10 +1,8 @@
 import { ArrowLeft, Sparkles, Star } from 'lucide-react'
-import { whatsappLink } from '@/lib/site'
-import { WhatsappIcon } from '@/components/icons/whatsapp'
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
+    <section id="top" className="relative overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16">
       {/* glow backdrop */}
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" aria-hidden />
       <div
@@ -41,15 +39,6 @@ export function Hero() {
             >
               קבלו הצעת מחיר חינם
               <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
-            </a>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-3.5 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 hover:bg-whatsapp-dark"
-            >
-              <WhatsappIcon className="h-5 w-5" />
-              דברו איתי בוואטסאפ
             </a>
           </div>
 

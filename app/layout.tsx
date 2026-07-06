@@ -1,11 +1,12 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Heebo, Rubik } from 'next/font/google'
+import { Assistant, Rubik } from 'next/font/google'
 import './globals.css'
 
-const heebo = Heebo({
+const assistant = Assistant({
   subsets: ['hebrew', 'latin'],
-  variable: '--font-heebo',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-assistant',
   display: 'swap',
 })
 
@@ -49,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${rubik.variable} bg-background`}>
+    <html lang="he" dir="rtl" className={`${assistant.variable} ${rubik.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

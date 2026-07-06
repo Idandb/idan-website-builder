@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-rubik), var(--font-heebo), sans-serif;
+  --font-sans: var(--font-assistant), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-rubik), var(--font-assistant), sans-serif;
 
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -53,7 +53,7 @@
   --secondary: oklch(0.26 0.03 250);
   --secondary-foreground: oklch(0.97 0.01 240);
   --muted: oklch(0.24 0.025 250);
-  --muted-foreground: oklch(0.79 0.028 245);
+  --muted-foreground: oklch(0.84 0.025 245);
   --accent: oklch(0.78 0.15 210);
   --accent-foreground: oklch(0.14 0.03 250);
   --destructive: oklch(0.62 0.22 25);
@@ -133,6 +133,22 @@
   }
   .aurora-slow {
     animation: aurora-pulse 18s ease-in-out infinite alternate;
+  }
+
+  /* קו תחתון נע מתחת לקישורי הניווט בהובר */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0;
+    background: var(--color-primary);
+    border-radius: 1px;
+    transition: width 0.25s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
   }
 
   /* אפקט 7 — הילת עכבר (spotlight) על כרטיסים */
