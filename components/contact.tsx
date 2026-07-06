@@ -122,6 +122,7 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
                 <input
                   id="phone"
                   type="tel"
+                  inputMode="tel"
                   required
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
