@@ -23,6 +23,8 @@ export function Reveal({ children, className = '', delay = 0, as }: RevealProps)
     if (!el) return
 
     if (typeof IntersectionObserver === 'undefined') {
+      // fallback חד-פעמי לדפדפנים ללא תמיכה — לא ניתן לדעת זאת בזמן ה-render
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true)
       return
     }

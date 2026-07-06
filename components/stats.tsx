@@ -28,6 +28,8 @@ function useCountUp(target: number | undefined, active: boolean, duration = 1400
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) {
+      // ערך סופי חד-פעמי כשהמשתמש מעדיף פחות אנימציה — לא ניתן לדעת זאת בזמן ה-render
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValue(target)
       return
     }
@@ -72,6 +74,8 @@ export function Stats() {
     const el = ref.current
     if (!el) return
     if (typeof IntersectionObserver === 'undefined') {
+      // fallback חד-פעמי לדפדפנים ללא תמיכה — לא ניתן לדעת זאת בזמן ה-render
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActive(true)
       return
     }

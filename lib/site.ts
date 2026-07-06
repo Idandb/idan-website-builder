@@ -20,7 +20,7 @@ export const projects = [
       'אתר תדמית עשיר עם חוויית משתמש עוצרת נשימה, תמונות נוף ומבנה שמזמין את הגולש להישאר ולחקור.',
     tags: ['אתר תדמית', 'עיצוב מותאם', 'חווית משתמש'],
     url: 'https://hevelhaaretz.co.il',
-    image: '/projects/hevel-haaretz.png',
+    image: '/projects/hevel-haaretz.webp',
   },
   {
     title: 'MM Drive',
@@ -29,7 +29,7 @@ export const projects = [
       'אתר אנרגטי וממיר עם קריאה ברורה לפעולה, טופס יצירת קשר חכם והצגת שירותים שמייצרת פניות.',
     tags: ['אתר עסקי', 'לידים', 'רספונסיבי'],
     url: 'https://mm-drive.vercel.app',
-    image: '/projects/mm-drive.png',
+    image: '/projects/mm-drive.webp',
   },
   {
     title: 'Medical Rights Agency',
@@ -38,6 +38,6 @@ export const projects = [
       'אתר מקצועי ואמין שבונה ביטחון אצל הגולש, מסביר את השירות בבהירות ומייצר פניות איכותיות.',
     tags: ['אתר תדמית', 'אמינות', 'המרות'],
     url: 'https://medical-rights-agency.vercel.app',
-    image: '/projects/medical-rights.png',
+    image: '/projects/medical-rights.webp',
   },
 ]

@@ -20,13 +20,19 @@ export function SpotlightCard({
   rel,
 }: SpotlightCardProps) {
   const ref = useRef<HTMLElement | null>(null)
+  const rafId = useRef<number>(0)
 
   const handleMove = (e: MouseEvent) => {
     const el = ref.current
     if (!el) return
-    const rect = el.getBoundingClientRect()
-    el.style.setProperty('--x', `${e.clientX - rect.left}px`)
-    el.style.setProperty('--y', `${e.clientY - rect.top}px`)
+    const x = e.clientX
+    const y = e.clientY
+    cancelAnimationFrame(rafId.current)
+    rafId.current = requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect()
+      el.style.setProperty('--x', `${x - rect.left}px`)
+      el.style.setProperty('--y', `${y - rect.top}px`)
+    })
   }
 
   const classes = `spotlight-card ${className}`.trim()
