@@ -47,7 +47,7 @@ export function SiteHeader() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="nav-link relative text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </a>

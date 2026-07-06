@@ -49,21 +49,11 @@ export function Portfolio() {
                   </div>
 
                   <div className="relative aspect-[16/10] overflow-hidden bg-card">
-                    {/* fallback — צילום מסך מאחורי ה-iframe אם האתר חוסם הטמעה */}
                     <img
                       src={p.image || '/placeholder.svg'}
                       alt={`תצוגה של האתר ${p.title}`}
-                      className="absolute inset-0 h-full w-full object-cover object-top"
-                      aria-hidden
-                    />
-                    <iframe
-                      src={p.url}
-                      title={`תצוגה חיה של האתר ${p.title}`}
                       loading="lazy"
-                      tabIndex={-1}
-                      sandbox="allow-scripts allow-same-origin allow-popups"
-                      className="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
-                      style={{ width: '250%', height: '250%', transform: 'scale(0.4)' }}
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent" />
                   </div>
