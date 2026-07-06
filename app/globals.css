@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-assistant), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-rubik), var(--font-assistant), sans-serif;
+  --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-rubik), var(--font-heebo), sans-serif;
 
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -29,9 +29,6 @@
 
   --color-glow: var(--glow);
 
-  --color-whatsapp: var(--whatsapp);
-  --color-whatsapp-dark: var(--whatsapp-dark);
-
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -53,7 +50,7 @@
   --secondary: oklch(0.26 0.03 250);
   --secondary-foreground: oklch(0.97 0.01 240);
   --muted: oklch(0.24 0.025 250);
-  --muted-foreground: oklch(0.84 0.025 245);
+  --muted-foreground: oklch(0.68 0.03 245);
   --accent: oklch(0.78 0.15 210);
   --accent-foreground: oklch(0.14 0.03 250);
   --destructive: oklch(0.62 0.22 25);
@@ -61,8 +58,6 @@
   --input: oklch(1 0 0 / 14%);
   --ring: oklch(0.72 0.16 230);
   --glow: oklch(0.72 0.18 230);
-  --whatsapp: #25d366;
-  --whatsapp-dark: #128c7e;
   --radius: 0.75rem;
 }
 
@@ -72,30 +67,9 @@
   }
   html {
     scroll-behavior: smooth;
-    /* קפיצות עוגן ינחתו מתחת ל-header הקבוע */
-    scroll-padding-top: 5rem;
-  }
-  html,
-  body {
-    /* מניעת גלילה אופקית מאלמנטי הזוהר (blur) שגולשים בצדדים */
-    overflow-x: hidden;
-    max-width: 100%;
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 }
 
@@ -111,116 +85,5 @@
     background-image: linear-gradient(oklch(1 0 0 / 4%) 1px, transparent 1px),
       linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px);
     background-size: 56px 56px;
-  }
-
-  /* אפקט 7 — Scroll reveal: fade + slide-up כשהאלמנט נכנס לתצוגה */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* אפקט 7 — רקע זוהר נע (aurora) ב-Hero */
-  .aurora {
-    animation: aurora-drift 14s ease-in-out infinite alternate;
-  }
-  .aurora-slow {
-    animation: aurora-pulse 18s ease-in-out infinite alternate;
-  }
-
-  /* קו תחתון נע מתחת לקישורי הניווט בהובר */
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: -4px;
-    height: 2px;
-    width: 0;
-    background: var(--color-primary);
-    border-radius: 1px;
-    transition: width 0.25s ease;
-  }
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  /* אפקט 7 — הילת עכבר (spotlight) על כרטיסים */
-  .spotlight-card {
-    position: relative;
-  }
-  .spotlight-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(
-      240px circle at var(--x, 50%) var(--y, 0%),
-      oklch(0.72 0.18 230 / 0.16),
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .spotlight-card:hover::before {
-    opacity: 1;
-  }
-}
-
-@keyframes aurora-drift {
-  0% {
-    transform: translate(-50%, 0) scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translate(-42%, 24px) scale(1.12);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-58%, -12px) scale(1.04);
-    opacity: 0.6;
-  }
-}
-
-@keyframes aurora-pulse {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-18px, -20px) scale(1.18);
-    opacity: 0.75;
-  }
-  100% {
-    transform: translate(10px, 8px) scale(1.05);
-    opacity: 0.55;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .aurora,
-  .aurora-slow {
-    animation: none;
-  }
-}
-
-/* חיסכון בסוללה/GPU בנייד — הזוהר נשאר, בלי אנימציה רציפה */
-@media (max-width: 767px) {
-  .aurora,
-  .aurora-slow {
-    animation: none;
   }
 }
