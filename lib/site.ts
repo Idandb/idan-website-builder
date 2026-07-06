@@ -2,6 +2,11 @@
 export const PHONE_DISPLAY = '053-545-5667'
 export const PHONE_INTL = '972535455667' // פורמט בינלאומי לוואטסאפ
 
+// כתובת האתר בפרודקשן — לעדכן ב-NEXT_PUBLIC_SITE_URL כשיהיה דומיין קבוע
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+
 export const WHATSAPP_MESSAGE = 'היי עידן, ראיתי את האתר ואשמח לשמוע פרטים על בניית אתר 😊'
 
 export const whatsappLink = `https://wa.me/${PHONE_INTL}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`

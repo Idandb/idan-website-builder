@@ -11,7 +11,7 @@ import { WhatsappFab } from '@/components/whatsapp-fab'
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen">
+    <main id="main" className="relative min-h-screen">
       <SiteHeader />
       <Hero />
       <Stats />

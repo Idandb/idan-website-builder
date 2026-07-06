@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ArrowUpLeft } from 'lucide-react'
 import { projects } from '@/lib/site'
 import { Reveal } from '@/components/reveal'
@@ -49,11 +50,12 @@ export function Portfolio() {
                   </div>
 
                   <div className="relative aspect-[16/10] overflow-hidden bg-card">
-                    <img
+                    <Image
                       src={p.image || '/placeholder.svg'}
                       alt={`תצוגה של האתר ${p.title}`}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent" />
                   </div>
