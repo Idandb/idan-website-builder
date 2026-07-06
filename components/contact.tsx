@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, Clock } from 'lucide-react'
+import { Phone, MessageCircle, Mail, Send, Clock } from 'lucide-react'
 import { PHONE_DISPLAY, PHONE_INTL, telLink, whatsappLink } from '@/lib/site'
-import { WhatsappIcon } from '@/components/icons/whatsapp'
 
 export function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', service: 'אתר תדמית', message: '' })
@@ -22,7 +21,7 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden py-16 md:py-28">
+    <section id="contact" className="relative overflow-hidden py-20 md:py-28">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
         aria-hidden
@@ -42,7 +41,7 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
             <h2 className="mt-3 text-balance font-display text-4xl font-black md:text-5xl">
               מוכנים לאתר שגורם <span className="text-primary glow-text">להגיד וואו?</span>
             </h2>
-            <p className="mt-4 text-pretty text-lg font-medium leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
               השאירו פרטים או דברו איתי ישירות בטלפון או בוואטסאפ — הייעוץ הראשוני
               חינם, ואני חוזר במהירות עם הצעה מותאמת בדיוק לעסק שלכם.
             </p>
@@ -67,10 +66,10 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-whatsapp/60"
+                className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-whatsapp/15 text-whatsapp">
-                  <WhatsappIcon className="h-5 w-5" />
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/15 text-primary">
+                  <MessageCircle className="h-5 w-5" />
                 </span>
                 <span>
                   <span className="block text-sm text-muted-foreground">וואטסאפ</span>
@@ -122,7 +121,6 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
                 <input
                   id="phone"
                   type="tel"
-                  inputMode="tel"
                   required
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -166,9 +164,9 @@ ${form.message ? `פרטים: ${form.message}` : ''}`
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.02] hover:bg-whatsapp-dark"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
               >
-                <WhatsappIcon className="h-5 w-5" />
+                <Send className="h-4 w-4" />
                 שליחה בוואטסאפ
               </button>
             </div>
