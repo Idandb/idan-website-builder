@@ -216,3 +216,11 @@
     animation: none;
   }
 }
+
+/* חיסכון בסוללה/GPU בנייד — הזוהר נשאר, בלי אנימציה רציפה */
+@media (max-width: 767px) {
+  .aurora,
+  .aurora-slow {
+    animation: none;
+  }
+}
