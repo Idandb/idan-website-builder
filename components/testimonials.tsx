@@ -1,4 +1,5 @@
 import { Quote, Star } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
 
 const testimonials = [
   {
@@ -23,7 +24,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-20 md:py-28">
+    <section id="testimonials" className="relative py-16 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -35,13 +36,15 @@ export function Testimonials() {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure
+          {testimonials.map((t, i) => (
+            <Reveal
               key={t.name}
-              className="flex flex-col rounded-2xl border border-border bg-card p-6"
+              delay={i * 90}
+              as="figure"
+              className="flex h-full flex-col rounded-2xl border border-border bg-card p-6"
             >
               <Quote className="h-8 w-8 text-primary/40" />
-              <blockquote className="mt-4 flex-1 text-pretty leading-relaxed text-foreground">
+              <blockquote className="mt-4 flex-1 text-pretty font-medium leading-relaxed text-foreground">
                 {t.quote}
               </blockquote>
               <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
@@ -55,7 +58,7 @@ export function Testimonials() {
                   ))}
                 </div>
               </div>
-            </figure>
+            </Reveal>
           ))}
         </div>
       </div>
