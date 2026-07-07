@@ -1,5 +1,6 @@
-import { Phone, MessageCircle } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { PHONE_DISPLAY, telLink, whatsappLink } from '@/lib/site'
+import { WhatsappIcon } from '@/components/icons/whatsapp'
 
 export function SiteFooter() {
   return (
@@ -33,9 +34,9 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="וואטסאפ"
-              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground transition-colors hover:bg-whatsapp hover:text-white"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsappIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -43,6 +44,15 @@ export function SiteFooter() {
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-border pt-6 text-sm text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} עידן בניית אתרים. כל הזכויות שמורות.</p>
           <p dir="ltr">{PHONE_DISPLAY}</p>
+        </div>
+
+        <div className="mt-6 text-center text-sm font-semibold text-muted-foreground">
+          נבנה על ידי{' '}
+          <span className="text-primary">עידן בניית אתרים</span>
+          {' · '}
+          <a href={telLink} dir="ltr" className="hover:text-foreground">
+            {PHONE_DISPLAY}
+          </a>
         </div>
       </div>
     </footer>
